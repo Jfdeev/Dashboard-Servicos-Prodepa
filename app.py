@@ -121,6 +121,10 @@ def main():
         st.subheader("📊 Distribuição de Largura de Banda")
         banda_counts = df['BANDA_MB'].value_counts().sort_index()
         st.bar_chart(banda_counts)
+        st.metric(
+            "Total de Banda (MB)",
+            f"{df['BANDA_MB'].sum():,.0f}" if 'BANDA_MB' in df.columns else "N/A"
+        )
 
     if 'SERVICO' in df.columns:
         st.subheader("🧮 Share de Serviços Contratados")
